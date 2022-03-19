@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="keywords" content="music, spotify, DONT BlOCK SPOTIFY IN RUSSIA" />
 <meta name="description" content="Spotify redesign" />
-<link href="../src/index.css" rel="stylesheet" type="text/css" />
+<link href="%PUBLIC_URL%/css/index.css" rel="stylesheet" type="text/css" />
 <link href="%PUBLIC_URL%/img/Spotify.ico" rel="shortcut icon" type="image/x-icon" />
 <title>Spotify - веб приложение</title>
 </head>
@@ -15,16 +15,16 @@
     <img  class="logo" src="%PUBLIC_URL%/img/spotify-logo.svg" title="Spotify logo" alt="Spotify logo" height="90%" width="90%"/>
 		<a class="Podcasts" href="#">Podcasts</a>
 		<div class="container">
-			<a href="#">Search</a>
+			<a href="#" class ="search">Search</a>
 		</div>
 		<a class="Playlists" href="#">Playlists</a>
 		<a class="Artists" href="#">Artists</a>
-    <div class="About">
-      <button class="dropbtn">Nikita</button>
+    <div class="about">
+      <button class="dropbtn" type="button">Nikita</button>
       <div class="dropdown-content">
-        <a href="#">Account</a>
-        <a href="#">Profile</a>
-        <a href="#">Exit</a>
+        <a href="#" class="acc">Account</a>
+        <a href="#" class="profile">Profile</a>
+        <a href="#" class="exit">Exit</a>
     	</div>
 		</div>
 	</header>
@@ -61,7 +61,7 @@
     	</article>
 		</div>
 		<div id="PlaylistsOfTheDay"><label>Playlists of the day</label></div>
-		<div id="articles">
+		<div id="Second">
 			<article>
 				<iframe
       		src="https://open.spotify.com/embed/playlist/37i9dQZF1E37ksgfsVPRgU?utm_source=generator&theme=0"
@@ -92,7 +92,7 @@
 			</article>
 	</div>
 	<div id="MoreMusic"><label>More Music</label></div>
-	<div id="articles">
+	<div id="Third">
 		<article>
 			<iframe
 				src="https://open.spotify.com/embed/playlist/37i9dQZF1DWVYwkQPBbuYy?utm_source=generator&theme=0"
