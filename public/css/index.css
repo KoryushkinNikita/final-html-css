@@ -1,0 +1,360 @@
+@charset "utf-8"
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+  box-sizing: inherit;
+}
+html {
+  height: 100%;
+  font-size: 1vh;
+}
+body {
+	width: 100%;
+	height: 100%;
+  background-size: unset;
+	font-family: "Segoe UI", san-serif;
+	line-height: 100%;
+  box-sizing: border-box;
+  background: black;
+}
+header {
+  float: left;
+  width: 100%;
+  height: 13%;
+  box-sizing: border-box;
+}
+
+.dropbtn {
+  background-color: black;
+  color: white;
+  font-size: 1.5vw;
+  border: none;
+  border-radius: 10rem;
+  width: 7vw;
+  height:4vh;
+	bottom: 0;
+  font-family: gotham_black;
+}
+
+.about {
+  position: absolute;
+  display: inline-block;
+  margin-left: 22vw;
+  margin-top: 4vh;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+	min-width: 7vw;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  font-size: 1.5vh;
+}
+
+.acc,.profile,.exit {
+  color: black;
+  padding: 10px;
+	text-decoration: none;
+  display: block;
+  font-family: gotham_black;
+
+}
+
+.dropdown-content a:hover {
+  background-color: black;
+  color: white;
+  font-size: 1.5vh;
+}
+
+.about:hover .dropdown-content {
+  display: block;
+  background-color: white;
+}
+
+.about:hover .dropbtn {
+  background-color: black;
+}
+
+
+
+.MainPage {
+  position: absolute;
+  margin-left:7vw;
+  font-size: 1.5vw;
+  margin-top: 6vh;
+  color: white;
+  text-decoration: none;
+  font-family: gotham_black;
+}
+
+.Podcasts{
+	position: absolute;
+	font-size: 1.5vw;
+	font-family: gotham_black;
+	text-decoration: none;
+	color: white;
+	margin-top: 6vh;
+	margin-left: -44.3vw;
+}
+
+.Playlists{
+	position: absolute;
+	font-size: 1.5vw;
+	font-family: gotham_black;
+	text-decoration: none;
+	color: white;
+	margin-top: 6vh;
+	margin-left: -2vw;
+}
+
+.Artists{
+	position: absolute;
+	font-size: 1.5vw;
+	font-family: gotham_black;
+	text-decoration: none;
+	color: white;
+	margin-top: 6vh;
+	margin-left: 11vw;
+}
+.logo{
+  margin-left: 33.5vw;
+  height: 10vh;
+  width: 30vw;
+  margin-top:2vh;
+}
+
+.container {
+  position: absolute;
+  width: 25rem;
+  height: 5vh;
+  margin-left: 30vw;
+  margin-top: -6.2vh;
+}
+.search{
+  text-decoration: none;
+  color: white;
+  font-family: gotham_black;
+  font-size: 1.5vw;
+}
+
+
+#wrapper {
+	float: left;
+	width: 96%;
+	margin-bottom: 7vh;
+	margin-top: 1.5%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+#wrapper #articles {
+	width: 100%;
+	margin-top: 2vh;
+}
+#wrapper #Second {
+	width: 100%;
+	margin-top: 2vh;
+}
+#wrapper #Third {
+	width: 100%;
+	margin-top: 2vh;
+}
+
+#articles article{
+	float: left;
+	box-sizing: border-box;
+	border-radius: 15px;
+	height: 35vh;
+  margin-left: 5vw;
+  margin-bottom: 5vh;
+	border-top: 4px solid green;
+	border-right:2px solid green;
+	border-bottom: 4px solid green;
+	width: 17vw;
+	margin-right: 1%;
+}
+
+#Second article{
+	float: left;
+	box-sizing: border-box;
+	border-radius: 15px;
+	height: 35vh;
+  margin-left: 5vw;
+  margin-bottom: 5vh;
+	border-top: 4px solid green;
+	border-right:2px solid green;
+	border-bottom: 4px solid green;
+	width: 17vw;
+	margin-right: 1%;
+}
+
+#Third article{
+	float: left;
+	box-sizing: border-box;
+	border-radius: 15px;
+	height: 35vh;
+  margin-left: 5vw;
+  margin-bottom: 5vh;
+	border-top: 4px solid green;
+	border-right:2px solid green;
+	border-bottom: 4px solid green;
+	width: 17vw;
+	margin-right: 1%;
+}
+
+
+#articles article h2{
+	width: 100%;
+	margin-left: 5%;
+  margin-top: 1%;
+	font-weight: normal;
+	font-size: 1.7em;
+	color: white;
+  font-family: gotham_black;
+}
+#Second article h2{
+	width: 100%;
+	margin-left: 5%;
+  margin-top: 1%;
+	font-weight: normal;
+	font-size: 1.7em;
+	color: white;
+  font-family: gotham_black;
+}
+#Third article h2{
+	width: 100%;
+	margin-left: 5%;
+  margin-top: 1%;
+	font-weight: normal;
+	font-size: 1.7em;
+	color: white;
+  font-family: gotham_black;
+}
+
+#blackLine{
+  float: left;
+  height: 10px;
+  width: 100%;
+  background-color: black;
+	margin: 0px;
+}
+
+#MyPlaylists,#PlaylistsOfTheDay,#MoreMusic {
+	width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  float:left;
+	height: 4vh;
+  color: white;
+
+}
+#MyPlaylists,#PlaylistsOfTheDay,#MoreMusic label{
+  font-family: gotham_black;
+  font-size: 2vw;
+  margin-left: 2vw;
+}
+
+iframe{
+	border-radius:12px;
+}
+
+footer {
+  position: fixed;
+  display: grid;
+	float: left;
+  grid-template-columns: 25% 50% 25%;
+  column-gap: 2vw;
+  width: 100%;
+  height: 10vh;
+  background: #1e1e1f;
+  bottom: 0;
+  float: left;
+	border-top: 1px solid green;
+}
+
+
+
+#left{
+  box-sizing: border-box;
+}
+
+#left #MyAlbum{
+  width: 4vw;
+  height: 6vh;
+  position: absolute;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  border-radius: 5px;
+}
+
+#left div{
+  margin-left: 7vw;
+  margin-top: 4vh;
+  font-family: gotham_black;
+  color: white;
+}
+
+.functionalButtons{
+	margin-top: 3.5vh;
+}
+.functionalButtons li{
+  list-style-type: none;
+	display: inline-block;
+	margin-left: 1vw;
+}
+
+#Microphone,#Playlist,#Sound{
+  height: 3vh;
+  width: 1vw;
+}
+
+#center img{
+	height: 4vh;
+  width: 2.5vw;
+}
+
+#center img:hover{
+	height: 4.5vh;
+  width: 3vw;
+}
+
+
+.functionalButtonsCenter{
+	margin-left: 11vw;
+	margin-top: 2vh;
+}
+.functionalButtonsCenter li {
+	display: inline-block;
+	list-style-type: none;
+	margin-right:1vw;
+}
+
+/* Styles For form range*/
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px -10px;
+  width: 5vw;
+	border-radius: 20px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+
+
+
+
+@font-face {
+font-family: 'gotham_black';
+src:url(../gotham_black.otf);
+font-style: normal;
+font-weight: normal;
+}
+
+@font-face {
+font-family: 'gotham_medium';
+src:url(../gotham_medium.otf);
+font-style: normal;
+font-weight: normal;
+}
