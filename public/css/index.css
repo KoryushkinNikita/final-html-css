@@ -205,34 +205,6 @@ header {
 }
 
 
-#articles article h2{
-	width: 100%;
-	margin-left: 5%;
-  margin-top: 1%;
-	font-weight: normal;
-	font-size: 1.7em;
-	color: white;
-  font-family: gotham_black;
-}
-#Second article h2{
-	width: 100%;
-	margin-left: 5%;
-  margin-top: 1%;
-	font-weight: normal;
-	font-size: 1.7em;
-	color: white;
-  font-family: gotham_black;
-}
-#Third article h2{
-	width: 100%;
-	margin-left: 5%;
-  margin-top: 1%;
-	font-weight: normal;
-	font-size: 1.7em;
-	color: white;
-  font-family: gotham_black;
-}
-
 #blackLine{
   float: left;
   height: 10px;
