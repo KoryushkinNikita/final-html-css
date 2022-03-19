@@ -58,7 +58,7 @@
 
 }
 
-.dropdown-content a:hover {
+.dropPage:hover {
   background-color: black;
   color: white;
   font-size: 1.5vh;
@@ -264,13 +264,13 @@
 }
 
 /* Styles For form range*/
-input[type=range] {
+.volumeRange {
   -webkit-appearance: none;
   margin: 10px -10px;
   width: 5vw;
 	border-radius: 20px;
 }
-input[type=range]:focus {
+.volumeRange:focus {
   outline: none;
 }
 
