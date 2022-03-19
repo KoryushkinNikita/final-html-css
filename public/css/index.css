@@ -1,15 +1,11 @@
 @charset "utf-8"
-*{
-	margin: 0;
-	padding: 0;
-	outline: none;
-  box-sizing: inherit;
-}
-html {
+.html {
   height: 100%;
   font-size: 1vh;
 }
-body {
+.body {
+	height: 100%;
+  font-size: 1vh;
 	width: 100%;
 	height: 100%;
   background-size: unset;
@@ -18,7 +14,7 @@ body {
   box-sizing: border-box;
   background: black;
 }
-header {
+.header {
   float: left;
   width: 100%;
   height: 13%;
@@ -41,7 +37,7 @@ header {
   position: absolute;
   display: inline-block;
   margin-left: 22vw;
-  margin-top: 4vh;
+  margin-top:4.5vh;
 }
 
 .dropdown-content {
@@ -53,9 +49,9 @@ header {
   font-size: 1.5vh;
 }
 
-.acc,.profile,.exit {
+.dropPage {
   color: black;
-  padding: 10px;
+  padding: 1vh;
 	text-decoration: none;
   display: block;
   font-family: gotham_black;
@@ -149,48 +145,13 @@ header {
   margin-right: 2%;
 }
 
-#wrapper #articles {
-	width: 100%;
-	margin-top: 2vh;
-}
-#wrapper #Second {
-	width: 100%;
-	margin-top: 2vh;
-}
-#wrapper #Third {
+.articles {
 	width: 100%;
 	margin-top: 2vh;
 }
 
-#articles article{
-	float: left;
-	box-sizing: border-box;
-	border-radius: 15px;
-	height: 35vh;
-  margin-left: 5vw;
-  margin-bottom: 5vh;
-	border-top: 4px solid green;
-	border-right:2px solid green;
-	border-bottom: 4px solid green;
-	width: 17vw;
-	margin-right: 1%;
-}
 
-#Second article{
-	float: left;
-	box-sizing: border-box;
-	border-radius: 15px;
-	height: 35vh;
-  margin-left: 5vw;
-  margin-bottom: 5vh;
-	border-top: 4px solid green;
-	border-right:2px solid green;
-	border-bottom: 4px solid green;
-	width: 17vw;
-	margin-right: 1%;
-}
-
-#Third article{
+.boxes{
 	float: left;
 	box-sizing: border-box;
 	border-radius: 15px;
@@ -213,26 +174,24 @@ header {
 	margin: 0px;
 }
 
-#MyPlaylists,#PlaylistsOfTheDay,#MoreMusic {
+.labels {
 	width: 100%;
   margin-right: auto;
   margin-left: auto;
   float:left;
 	height: 4vh;
   color: white;
-
-}
-#MyPlaylists,#PlaylistsOfTheDay,#MoreMusic label{
-  font-family: gotham_black;
+	font-family: gotham_black;
   font-size: 2vw;
   margin-left: 2vw;
+
 }
 
-iframe{
+.frames{
 	border-radius:12px;
 }
 
-footer {
+.footer {
   position: fixed;
   display: grid;
 	float: left;
@@ -252,7 +211,7 @@ footer {
   box-sizing: border-box;
 }
 
-#left #MyAlbum{
+.MyOwnAlbum{
   width: 4vw;
   height: 6vh;
   position: absolute;
@@ -261,7 +220,7 @@ footer {
   border-radius: 5px;
 }
 
-#left div{
+.SongAndArtist{
   margin-left: 7vw;
   margin-top: 4vh;
   font-family: gotham_black;
@@ -271,23 +230,24 @@ footer {
 .functionalButtons{
 	margin-top: 3.5vh;
 }
-.functionalButtons li{
+.lis{
   list-style-type: none;
 	display: inline-block;
 	margin-left: 1vw;
+	padding-left: 0.5vw;
 }
 
-#Microphone,#Playlist,#Sound{
+.RigthButtons{
   height: 3vh;
   width: 1vw;
 }
 
-#center img{
+.CentralButtons{
 	height: 4vh;
   width: 2.5vw;
 }
 
-#center img:hover{
+.CentralButtons:hover{
 	height: 4.5vh;
   width: 3vw;
 }
@@ -297,10 +257,10 @@ footer {
 	margin-left: 11vw;
 	margin-top: 2vh;
 }
-.functionalButtonsCenter li {
+.Rlis{
 	display: inline-block;
 	list-style-type: none;
-	margin-right:1vw;
+	margin-right:1.5vw;
 }
 
 /* Styles For form range*/
