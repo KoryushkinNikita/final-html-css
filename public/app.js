@@ -35,14 +35,9 @@ const APIController = (function() {
 
        if (data.error) {
          return null;
-       } else
-         switch (category) {
-        case 'Genre': return data.categories.items;
-        case 'GenrePlaylists': return data.playlists.items;
-        case 'Songs': return data.items;
-        default: return data;
+       }
+       return data;
 
-      }
     } catch (error) {
       alert(error.message);
     }
@@ -54,31 +49,37 @@ const APIController = (function() {
      * @description Функция получения жанров
      */
   async getGenres() {
-      const data = send(`https://api.spotify.com/v1/browse/categories?locale=sv_RU`, 'Genre');
+      const data = await send(`https://api.spotify.com/v1/browse/categories?locale=sv_RU`);
         if (data)
-          return data;
-        else return null
+          return data.categories.items;
+        return null
     },
     /**
      * @description Функция получения плейлистов по подходящему жанру
      * @param {string} genreId - id заданного жанра
      */
     async getPlaylistByGenre(genreId) {
-      return send(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=10`, 'GenrePlaylists');
+      const data = await send(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=10`);
+        if (data)
+          return data.playlists.items;
+        return null
     },
     /**
      * @description Функция получения списка песен
      * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песни в плейлисте
      */
     async getTracks(tracksEndPoint) {
-        return send(`${tracksEndPoint}?limit=10`, 'Songs');
+        const data = await send(`${tracksEndPoint}?limit=10`);
+        if (data)
+          return data.items;
+        return null
     },
     /**
      * @description Функция получения информации о песне
      * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песню
      */
     async getTrack(trackEndPoint) {
-      const result = send(`${trackEndPoint}`);
+      const result = await send(`${trackEndPoint}`);
       if (result)
         return result
       else return null
@@ -88,7 +89,7 @@ const APIController = (function() {
      * @param {string} id - id плейлиста
      */
     async getPlaylist(id) {
-      const result = send(`https://api.spotify.com/v1/albums/${id}`);
+      const result = await send(`https://api.spotify.com/v1/albums/${id}`);
       if (result)
         return result
       else return null
@@ -148,19 +149,6 @@ const UIController = (function() {
       else if (selector == 'playlist')
       document.querySelector(DOM_Elements.selectPlaylist).insertAdjacentHTML('beforeend', options);
     },
-    // createGenre(text, value) {
-    //   const options = `<option value="${value}">${text}</option>`;
-    //   document.querySelector(DOM_Elements.selectGenre).insertAdjacentHTML('beforeend', options);
-    // },
-    // /**
-    //  * @description Функция создания плейлистов для <option>
-    //  * @param {string} text - название плейлиста
-    //  * @param {string}  value - id плейлиста
-    //  */
-    // createPlaylist(text, value) {
-    //   const html = `<option value="${value}">${text}</option>`;
-    //   document.querySelector(DOM_Elements.selectPlaylist).insertAdjacentHTML('beforeend', html);
-    // },
     /**
      * @description Функция создания списка треков
      * @param {string} name - название песни
@@ -223,20 +211,6 @@ const UIController = (function() {
       this.inputField().playlist.innerHTML = '';
       this.resetTracks();
     },
-    // /**
-    //  * @description Функция сохранения токена
-    //  */
-    // storeToken(value) {
-    //   document.querySelector(DOM_Elements.hfToken).value = value;
-    // },
-    // /**
-    //  * @description Функция получения сохраненного токена
-    //  */
-    // getStoredToken() {
-    //   return {
-    //     token: document.querySelector(DOM_Elements.hfToken).value
-    //   }
-    // }
   }
 
 })();
@@ -248,11 +222,6 @@ const APPController = (function(UICtrl, APICtrl) {
    * @description Функция загрузки жанров при загрузке страницы
    */
   const loadGenres = async () => {
-
-    // const token = await APICtrl.getToken();
-
-    // UICtrl.storeToken(token);
-    // localStorage.setItem('my_token', '...token...');
 
     const genres = await APICtrl.getGenres();
 
@@ -277,7 +246,7 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const track = await APICtrl.getTrack('https://api.spotify.com/v1/tracks/1rDQ4oMwGJI7B4tovsBOxc');
 
-    UICtrl.createDetail('album', track.album.images[1].url, track.name, track.artists[0].name);
+    UICtrl.createDetail('album', track.name, track.album.images[1].url,track.artists[0].name);
   }
 
   /**
