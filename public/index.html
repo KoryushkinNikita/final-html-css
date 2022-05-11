@@ -9,7 +9,6 @@
 	<link href="%PUBLIC_URL%/img/Spotify.ico" rel="shortcut icon" type="image/x-icon" />
 	<title>Spotify - веб приложение</title>
 </head>
-
 <body class="body">
 	<header class="header">
 		<a class="MainPage" href="main.html"> Main page</a>
@@ -33,43 +32,39 @@
 	<div class="wrapper">
 		<div id="First" class="articles">
 			<div id="MyPlaylists" class="labels"><label>My Playlists</label></div>
-			<article class="boxes" id="box">
+			<article class="playlist toInsert">
 			</article>
-			<article class="boxes" id="box">
+			<article class="playlist toInsert">
 			</article>
-			<article class="boxes" id="box">
+			<article class="playlist toInsert">
 			</article>
-			<article class="boxes" id="box">
+			<article class="playlist toInsert">
 			</article>
-			<article class="boxes" id="box">
 			</article>
 		</div>
 		<div id="PlaylistsOfTheDay" class="labels"><label>Top Songs</label></div>
 		<div id="Second" class="articles">
-			<article class="boxes" id="boxSongs">
+			<article class='album toInsert'>
 			</article>
-			<article class="boxes" id="boxSongs">
+			<article class='album toInsert'>
 			</article>
-			<article class="boxes" id="boxSongs">
 			</article>
-			<article class="boxes" id="boxSongs">
+			<article class='album toInsert'>
 			</article>
-			<article class="boxes" id="boxSongs">
+			<article class='album toInsert'>
 			</article>
 		</div>
 		<div id="SearchPlaylist" class="labels"><label>Search Playlists</label></div>
 		<div class="container">
 			<form action="">
 				<input type="hidden" id='hidden_token'>
-
-					<div id="SelectGere" class="label"><label>Select genre</label></div>
-					<select name="" id="select_genre" class="selectGenre">
+					<select name="" id="select_genre" class="selectGenre containerButtons">
 						<option>Select Genre</option>
 					</select>
-					<select name="" id="select_playlist" class="selectPlaylist">
+					<select name="" id="select_playlist" class="selectPlaylist containerButtons">
 						<option>Select Playlist</option>
 					</select>
-					<button type="submit" id="btn_submit" class="SearchButton">Search</button>
+					<button type="submit" id="btn_submit" class="SearchButton containerButtons">Search</button>
 
 			</form>
 
