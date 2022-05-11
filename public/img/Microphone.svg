@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns:vectornator="http://vectornator.io" version="1.1" viewBox="0 0 32 32">
+<metadata>
+<vectornator:setting key="DimensionsVisible" value="1"/>
+<vectornator:setting key="PencilOnly" value="0"/>
+<vectornator:setting key="SnapToPoints" value="0"/>
+<vectornator:setting key="GuidesVisible" value="1"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+<vectornator:setting key="OutlineMode" value="0"/>
+<vectornator:setting key="CMYKEnabledKey" value="0"/>
+<vectornator:setting key="SnapToEdges" value="0"/>
+<vectornator:setting key="DisplayWhiteBackground" value="0"/>
+<vectornator:setting key="doHistoryDisabled" value="0"/>
+<vectornator:setting key="TimeLapseWatermarkDisabled" value="0"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="Units" value="Points"/>
+<vectornator:setting key="IsolateActiveLayer" value="0"/>
+<vectornator:setting key="DynamicGuides" value="0"/>
+<vectornator:setting key="SnapToGrid" value="0"/>
+</metadata>
+<defs/>
+<g id="Layer 46" vectornator:layerName="Layer 46">
+<path d="M16+27C10.4772+27+6+22.5228+6+17C6+16.4477+6.44772+16+7+16C7.55228+16+8+16.4477+8+17C8+21.4183+11.5817+25+16+25C20.4183+25+24+21.4183+24+17C24+16.4477+24.4477+16+25+16C25.5523+16+26+16.4477+26+17C26+22.5228+21.5228+27+16+27Z" opacity="1" fill="#ffffff"/>
+<path d="M16+31C15.4477+31+15+30.5523+15+30L15+26C15+25.4477+15.4477+25+16+25C16.5523+25+17+25.4477+17+26L17+30C17+30.5523+16.5523+31+16+31Z" opacity="1" fill="#ffffff"/>
+<path d="M16+23C12.6863+23+10+20.3137+10+17L10+7C10+3.68629+12.6863+1+16+1C19.3137+1+22+3.68629+22+7L22+17C22+20.3137+19.3137+23+16+23ZM16+3C13.7909+3+12+4.79086+12+7L12+17C12+19.2091+13.7909+21+16+21C18.2091+21+20+19.2091+20+17L20+7C20+4.79086+18.2091+3+16+3Z" opacity="1" fill="#ffffff"/>
+</g>
+</svg>
