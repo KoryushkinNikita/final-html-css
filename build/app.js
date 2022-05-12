@@ -4,8 +4,8 @@ const APIController = (function() {
   const clientSecret = '10badbb697f544ecb15e1efd7659a0b0';
 
   const send = async (url,category,params) => {
-      const token = localStorage.getItem('my_token');
-      if (token.length != 83){
+      let token = localStorage.my_token;
+      if (token == null){
         const result = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
@@ -16,7 +16,7 @@ const APIController = (function() {
         }).catch(err => alert(err.message));
         const data = await result.json();
         token = data.access_token;
-        localStorage.setItem('my_token', '...token...');
+        localStorage.my_token = token;
       }
 
      if (!params) {
@@ -34,129 +34,65 @@ const APIController = (function() {
        const data = await result.json();
 
        if (data.error) {
-          // alert("We cant load info,'couse of Spotify's troubles");
          return null;
-       } else
-         switch (category) {
-        case 'Genre': return data.categories.items;
-        case 'GenrePlaylists': return data.playlists.items;
-        case 'Songs': return data.items;
-        default: return data;
+       }
+       return data;
 
-      }
     } catch (error) {
       alert(error.message);
     }
     return null;
   }
 
-  /**
-   * @description Функция получения Токена Spotify
-   */
-  const _getToken = async () => {
-
-     const result = await fetch('https://accounts.spotify.com/api/token', {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/x-www-form-urlencoded',
-         'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-       },
-       body: 'grant_type=client_credentials'
-     }).catch(err => alert(err.message));
-     const data = await result.json();
-
-    if (data.error) {
-       alert("We cant find your token :(");
-      return null;
-    } else {
-      return data.access_token;
-      }
-    }
-
-
-
-    // const result = send('https://accounts.spotify.com/api/token', null, {
-    //    method: 'POST',
-    //    headers: {
-    //      'Content-Type': 'application/x-www-form-urlencoded',
-    //      'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-    //    },
-    //    body: 'grant_type=client_credentials'
-    //  })
-    //  if (result) {
-    //      return result.access_token;
-    //  }
-    //  return null;
-  /**
-   * @description Функция получения жанров
-   * @param {string} token - токен Spotify
-   */
-  const _getGenres = async () => {
-    if (data){
-      return send(`https://api.spotify.com/v1/browse/categories?locale=sv_RU`, 'Genre');
-    }
-    else return null;
-  }
-  /**
-   * @description Функция получения плейлистов по подходящему жанру
-   * @param {string} token - токен Spotify
-   * @param {string} genreId - id заданного жанра
-   */
-  const _getPlaylistByGenre = async (token, genreId) => {
-    return send(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=10`, token);
-  }
-
-  /**
-   * @description Функция получения списка песен
-   * @param {string} token - токен Spotify
-   * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песни в плейлисте
-   */
-  const _getTracks = async (token, tracksEndPoint) => {
-
-    return send(`${tracksEndPoint}?limit=10`, token);
-  }
-  /**
-   * @description Функция получения информации о песне
-   * @param {string} token - токен Spotify
-   * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песню
-   */
-  const _getTrack = async (token, trackEndPoint) => {
-    const result = send(`${trackEndPoint}`, token);
-    if (result)
-      return result
-    else return null
-  }
-  /**
-   * @description Функция получения информации о плейлисте
-   * @param {string} token - токен Spotify
-   * @param {string} id - id плейлиста
-   */
-  const _getPlaylist = async (id) => {
-
-    const result = send(`https://api.spotify.com/v1/albums/${id}`);
-    if (result)
-      return result
-    else return null
-  }
-
   return {
-    getToken() {
-      return _getToken();
+    /**
+     * @description Функция получения жанров
+     */
+  async getGenres() {
+      const data = await send(`https://api.spotify.com/v1/browse/categories?locale=sv_RU`);
+        if (data)
+          return data.categories.items;
+        return null
     },
-    getGenres() {
-      return _getGenres();
+    /**
+     * @description Функция получения плейлистов по подходящему жанру
+     * @param {string} genreId - id заданного жанра
+     */
+    async getPlaylistByGenre(genreId) {
+      const data = await send(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=10`);
+        if (data)
+          return data.playlists.items;
+        return null
     },
-    getPlaylistByGenre(token, genreId) {
-      return _getPlaylistByGenre(token, genreId);
+    /**
+     * @description Функция получения списка песен
+     * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песни в плейлисте
+     */
+    async getTracks(tracksEndPoint) {
+        const data = await send(`${tracksEndPoint}?limit=10`);
+        if (data)
+          return data.items;
+        return null
     },
-    getTracks(token, tracksEndPoint) {
-      return _getTracks(token, tracksEndPoint);
+    /**
+     * @description Функция получения информации о песне
+     * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песню
+     */
+    async getTrack(trackEndPoint) {
+      const result = await send(`${trackEndPoint}`);
+      if (result)
+        return result
+      else return null
     },
-    getTrack(token, trackEndPoint) {
-      return _getTrack(token, trackEndPoint);
-    },
-    getPlaylist(id) {
-      return _getPlaylist(id);
+    /**
+     * @description Функция получения информации о плейлисте
+     * @param {string} id - id плейлиста
+     */
+    async getPlaylist(id) {
+      const result = await send(`https://api.spotify.com/v1/albums/${id}`);
+      if (result)
+        return result
+      else return null
     }
   }
 })();
@@ -165,10 +101,10 @@ const APIController = (function() {
 const UIController = (function() {
   const getElementTemplate = (type, name, img, artist) => {
 
-    const element =
+    return (
       `
-    <div class="${type}Photo">
-      <img src="${img}" class="songPhoto" alt="">
+    <div class="${type}Photo ">
+      <img src="${img}" class="songPhoto photo" alt="">
     </div>
     <div class="${type}Name">
         <label for="boxes" class="SongTitle"><b>${name}</b></label>
@@ -176,8 +112,8 @@ const UIController = (function() {
     <div class="${type}Artist">
         <label for="boxes" class="PlaylistOwner">${artist}</label>
     </div>
-    `
-    return element;
+    `)
+
   }
 
   const DOM_Elements = {
@@ -208,21 +144,10 @@ const UIController = (function() {
 
     addOption(selector, text, value){
       const options = `<option value="${value}">${text}</option>`;
-      const doSelect = 'select' + selector
-      document.querySelector(DOM_Elements.doSelect).insertAdjacentHTML('beforeend', options);
-    },
-    createGenre(text, value) {
-      const options = `<option value="${value}">${text}</option>`;
+      if (selector == 'Genre')
       document.querySelector(DOM_Elements.selectGenre).insertAdjacentHTML('beforeend', options);
-    },
-    /**
-     * @description Функция создания плейлистов для <option>
-     * @param {string} text - название плейлиста
-     * @param {string}  value - id плейлиста
-     */
-    createPlaylist(text, value) {
-      const html = `<option value="${value}">${text}</option>`;
-      document.querySelector(DOM_Elements.selectPlaylist).insertAdjacentHTML('beforeend', html);
+      else if (selector == 'playlist')
+      document.querySelector(DOM_Elements.selectPlaylist).insertAdjacentHTML('beforeend', options);
     },
     /**
      * @description Функция создания списка треков
@@ -286,20 +211,6 @@ const UIController = (function() {
       this.inputField().playlist.innerHTML = '';
       this.resetTracks();
     },
-    // /**
-    //  * @description Функция сохранения токена
-    //  */
-    // storeToken(value) {
-    //   document.querySelector(DOM_Elements.hfToken).value = value;
-    // },
-    // /**
-    //  * @description Функция получения сохраненного токена
-    //  */
-    // getStoredToken() {
-    //   return {
-    //     token: document.querySelector(DOM_Elements.hfToken).value
-    //   }
-    // }
   }
 
 })();
@@ -311,11 +222,6 @@ const APPController = (function(UICtrl, APICtrl) {
    * @description Функция загрузки жанров при загрузке страницы
    */
   const loadGenres = async () => {
-
-    // const token = await APICtrl.getToken();
-
-    // UICtrl.storeToken(token);
-    // localStorage.setItem('my_token', '...token...');
 
     const genres = await APICtrl.getGenres();
 
@@ -338,11 +244,9 @@ const APPController = (function(UICtrl, APICtrl) {
    */
   const loadSongs = async () => {
 
-    const token = await APICtrl.getToken();
+    const track = await APICtrl.getTrack('https://api.spotify.com/v1/tracks/1rDQ4oMwGJI7B4tovsBOxc');
 
-    const track = await APICtrl.getTrack(token, 'https://api.spotify.com/v1/tracks/1rDQ4oMwGJI7B4tovsBOxc');
-
-    UICtrl.createDetail('album', track.album.images[1].url, track.name, track.artists[0].name);
+    UICtrl.createDetail('album', track.name, track.album.images[1].url,track.artists[0].name);
   }
 
   /**
@@ -352,15 +256,13 @@ const APPController = (function(UICtrl, APICtrl) {
 
     UICtrl.resetPlaylist();
 
-    const token = localStorage.getItem('my_token');
-
     const genreSelect = UICtrl.inputField().genre;
 
     const genreId = genreSelect.options[genreSelect.selectedIndex].value;
 
-    const playlists = await APICtrl.getPlaylistByGenre(token, genreId);
+    const playlists = await APICtrl.getPlaylistByGenre(genreId);
 
-    playlists.forEach(p => UICtrl.createPlaylist(p.name, p.tracks.href));
+    playlists.forEach(p => UICtrl.addOption('playlist',p.name, p.tracks.href));
   });
 
 
@@ -379,7 +281,7 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const tracksEndPoint = playlistSelect.options[playlistSelect.selectedIndex].value;
 
-    const tracks = await APICtrl.getTracks(token, tracksEndPoint);
+    const tracks = await APICtrl.getTracks(tracksEndPoint);
 
     tracks.forEach(el => UICtrl.createTrack(el.track.href, el.track.name))
 
@@ -398,20 +300,20 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const trackEndpoint = e.target.id;
 
-    const track = await APICtrl.getTrack(token, trackEndpoint);
+    const track = await APICtrl.getTrack(trackEndpoint);
 
     UICtrl.createTrackDetail(track.album.images[1].url, track.name, track.artists[0].name);
   });
 
   return {
     init() {
-      // loadGenres();
+      loadGenres();
       loadPlaylists();
-      // loadSongs();
+      loadSongs();
     }
   }
 
 })(UIController, APIController);
 
-
+localStorage.clear();
 APPController.init();
