@@ -225,7 +225,11 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const genres = await APICtrl.getGenres();
 
-    genres.forEach(element => UICtrl.addOption('Genre',element.name, element.id));
+    if (genres)
+
+      genres.forEach(element => UICtrl.addOption('Genre',element.name, element.id));
+
+
   }
 
 
@@ -236,7 +240,9 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const playlist = await APICtrl.getPlaylist('3PZTFPQhr0vHnYGwFUvQco');
 
-    UICtrl.createDetail('playlist', playlist.name, playlist.images[0].url, playlist.artists[0].name);
+    if (playlist)
+
+      UICtrl.createDetail('playlist', playlist.name, playlist.images[0].url, playlist.artists[0].name);
   }
 
   /**
@@ -246,7 +252,9 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const track = await APICtrl.getTrack('https://api.spotify.com/v1/tracks/1rDQ4oMwGJI7B4tovsBOxc');
 
-    UICtrl.createDetail('album', track.name, track.album.images[1].url,track.artists[0].name);
+    if (track)
+
+      UICtrl.createDetail('album', track.name, track.album.images[1].url,track.artists[0].name);
   }
 
   /**
@@ -262,7 +270,9 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const playlists = await APICtrl.getPlaylistByGenre(genreId);
 
-    playlists.forEach(p => UICtrl.addOption('playlist',p.name, p.tracks.href));
+    if (genreSelect && genreId && playlists)
+
+      playlists.forEach(p => UICtrl.addOption('playlist',p.name, p.tracks.href));
   });
 
 
@@ -275,7 +285,6 @@ const APPController = (function(UICtrl, APICtrl) {
 
     UICtrl.resetTracks();
 
-    const token = localStorage.getItem('my_token');
 
     const playlistSelect = UICtrl.inputField().playlist;
 
@@ -283,7 +292,9 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const tracks = await APICtrl.getTracks(tracksEndPoint);
 
-    tracks.forEach(el => UICtrl.createTrack(el.track.href, el.track.name))
+    if (playlistSelect && tracksEndPoint && tracks)
+
+      tracks.forEach(el => UICtrl.createTrack(el.track.href, el.track.name))
 
   });
 
@@ -296,13 +307,14 @@ const APPController = (function(UICtrl, APICtrl) {
 
     UICtrl.resetTrackDetail();
 
-    const token = localStorage.getItem('my_token');
 
     const trackEndpoint = e.target.id;
 
     const track = await APICtrl.getTrack(trackEndpoint);
 
-    UICtrl.createTrackDetail(track.album.images[1].url, track.name, track.artists[0].name);
+    if (tracksEndPoint && track)
+
+      UICtrl.createTrackDetail(track.album.images[1].url, track.name, track.artists[0].name);
   });
 
   return {
