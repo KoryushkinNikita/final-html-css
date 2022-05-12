@@ -1,8 +1,20 @@
 @charset "utf-8"
+
 .html {
-   height: 100%;
-   font-size: 1vh;
- }
+  height: 100%;
+  font-size: 1vh;
+}
+.body::before{
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url(../img/space.jpg);
+  filter: blur(5px);
+}
 .body {
   height: 100%;
   font-size: 1vh;
@@ -12,7 +24,8 @@
   font-family: "Segoe UI", san-serif;
   line-height: 100%;
   box-sizing: border-box;
-  background: black;
+  /* background-image: url(../img/space.jpg); */
+  background-attachment: fixed;
 }
 
 .header {
@@ -23,7 +36,7 @@
 }
 
 .dropbtn {
-  background-color: black;
+  background-color: transparent;
   color: white;
   font-size: 1.5vw;
   border: none;
@@ -150,50 +163,48 @@
   margin-left: 2vw;
 }
 
-.boxes, .boxesSongs {
+.toInsert {
   float: left;
   box-sizing: border-box;
   height: 35vh;
-  margin-left: 5vw;
+  margin-left: 6vw;
   margin-bottom: 5vh;
-  width: 12vw;
+  width: 15vw;
   border-radius: 1vh;
   margin-right: 1%;
-  background-color:rgba(30,30,31);
 }
+
 .BlackLine {
   float: left;
   height: 7vh;
   width: 100%;
-  background-color: black;
   margin: 0px;
 }
 
 .labels {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
   float: left;
   height: 4vh;
   color: white;
   font-family: gotham_black;
   font-size: 2vw;
   margin-left: 2vw;
+  margin-top: 2vh;
 }
 
 .container {
-  float:left;
+  float: left;
   margin-top: 2vh;
   margin-left: 0vw;
   width: 100%;
 }
 
-#MyPlaylists{
+#MyPlaylists {
   margin-left: 0vw;
 }
 
 .songOfPlaylist {
-  float:left;
+  float: left;
   color: white;
   font-family: gotham_black;
   font-size: 1.2vw;
@@ -201,14 +212,14 @@
   text-decoration: none;
   border: 0.5vh solid gray;
   width: 40vw;
-  background-color:rgba(30,30,31);
+  background-color: rgba(30, 30, 31);
 }
 
-.songOfPlaylist:hover{
-  background-color:black;
+.songOfPlaylist:hover {
+  background-color: black;
 }
 
-.song-list{
+.song-list {
   float: left;
   display: flex;
   list-style-type: none;
@@ -219,12 +230,11 @@
   margin-left: -1vw;
 }
 
-
 .trackInfo {
-  background-color:rgba(30,30,31);
+  background-color: rgba(30, 30, 31);
   margin-bottom: 7vh;
   box-sizing: border-box;
-  float:right;
+  float: right;
   margin-right: 10vw;
   font-family: gotham_black;
   font-size: 1.2vw;
@@ -234,7 +244,7 @@
   margin-top: 1vh;
 }
 
-.trackInfo:hover{
+.trackInfo:hover {
   background-color: black;
 }
 
@@ -247,86 +257,41 @@
   margin-top: 4vh;
 }
 
-.trackTitle, .trackArtist {
-  color: white;
-  font-size: 1vw;
-}
-.trackTitle{
-  margin-top: 7vh;
-  margin-left: 8vw;
-}
-.trackArtist{
-  margin-top: 2vh;
-  margin-left: 8vw;
-}
-
-.selectGenre, .selectPlaylist, .SearchButton{
+.containerButtons {
   width: 10vw;
   font-size: 1vw;
   margin-bottom: 2vh;
   margin-left: 7vw;
-  background-color: rgba(30,30,31);
+  background-color: rgba(30, 30, 31);
   color: white;
 }
 
-
-
-
-.Genre, .Playlist {
-  color: white;
-  font-style: gotham_black;
-  font-size: 1.3vw;
-
-}
-
-.SongTitle{
+.SongTitle {
   position: absolute;
   font-family: gotham_black;
   color: white;
   font-size: 1vw;
   margin-top: 1.5vh;
-  margin-left: 1vw;
+  margin-left: 2vw;
 }
 
-.songPhoto, .albumSongPhoto{
-  width: 10vw;
-  height: 20vh;
-  margin-left: 1vw;
+.photo {
+  width: 15vw;
+  height: 28vh;
+  margin-left: -2vw;
   margin-top: 3vh;
 }
 
-.albumSongTitle, .albumOwner{
+.PlaylistOwner {
+  position: absolute;
   color: white;
   font-family: gotham_black;
-  margin-left: 1vw;
-}
-
-.albumSongTitle{
-  position: absolute;
-  font-size: 1vw;
-  margin-top: 2vh;
-}
-
-.albumOwner{
-  position: absolute;
-  font-size: 0.8vw;
+  font-size: 1.5vw;
   margin-top: 5vh;
-}
-
-.PlaylistOwner{
-  position: absolute;
-  color: white;
-  font-family: gotham_black;
-  font-size: 0.8vw;
-  margin-top: 4vh;
-  margin-left: 1vw;
+  margin-left: 2vw;
 }
 
 
-.albumName{
-  font-style: gotham_black;
-  font-size: 0.5vw;
-}
 .footer {
   position: fixed;
   display: grid;
@@ -337,8 +302,7 @@
   margin-left: 25vw;
   border-radius: 3vh 3vh 0% 0%;
   height: 10vh;
-  /* background: #1e1e1f; */
-  background-color:rgba(30,30,31,0.9);
+  background-color: rgba(30, 30, 31, 0.9);
   bottom: 0;
   border-top: 1px solid green;
 }
