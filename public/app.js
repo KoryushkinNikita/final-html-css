@@ -127,11 +127,15 @@ const UIController = (function() {
 
   return {
 
-        genre: document.querySelector(DOM_Elements.selectGenre),
-        playlist: document.querySelector(DOM_Elements.selectPlaylist),
-        tracks: document.querySelector(DOM_Elements.divSonglist),
-        submit: document.querySelector(DOM_Elements.buttonSubmit),
-        songDetail: document.querySelector(DOM_Elements.SongDetail)
+    inputField : {
+    genre: document.querySelector(DOM_Elements.selectGenre),
+    playlist: document.querySelector(DOM_Elements.selectPlaylist),
+    tracks: document.querySelector(DOM_Elements.divSonglist),
+    submit: document.querySelector(DOM_Elements.buttonSubmit),
+    songDetail: document.querySelector(DOM_Elements.SongDetail)
+  }
+
+
     ,
     /**
      * @description Функция создания жанров для <option>
@@ -142,9 +146,9 @@ const UIController = (function() {
     addOption(selector, text, value){
       const options = `<option value="${value}">${text}</option>`;
       if (selector == 'Genre')
-      this.genre.insertAdjacentHTML('beforeend', options);
+      this.inputField.genre.insertAdjacentHTML('beforeend', options);
       else if (selector == 'playlist')
-      this.playlist.insertAdjacentHTML('beforeend', options);
+      this.inputField.playlist.insertAdjacentHTML('beforeend', options);
     },
     /**
      * @description Функция создания списка треков
@@ -153,7 +157,7 @@ const UIController = (function() {
      */
     createTrack(id, name) {
       const track = `<li><a href="#" class="songOfPlaylist" id="${id}">${name}</a></li>`;
-      this.tracks.insertAdjacentHTML('beforeend', track);
+      this.inputField.tracks.insertAdjacentHTML('beforeend', track);
     },
     /**
      * @description Функция создания элемента песни в html
@@ -193,20 +197,20 @@ const UIController = (function() {
      * @description Функция очистки элемента песни в html
      */
     resetTrackDetail() {
-      this.songDetail.innerHTML = '';
+      this.inputField.songDetail.innerHTML = '';
     },
     /**
      * @description Функция очистки списка песен
      */
     resetTracks() {
-      this.tracks.innerHTML = '';
+      this.inputField.tracks.innerHTML = '';
       this.resetTrackDetail();
     },
     /**
      * @description Функция очистки списка плейлистов
      */
     resetPlaylist() {
-      this.playlist.innerHTML = '';
+      this.inputField.playlist.innerHTML = '';
       this.resetTracks();
     },
   }
@@ -215,7 +219,7 @@ const UIController = (function() {
 
 const APPController = (function(UICtrl, APICtrl) {
 
-  // const DOMInputs = UICtrl.inputField();
+  const DOMInputs = UICtrl.inputField;
   /**
    * @description Функция загрузки жанров при загрузке страницы
    */
@@ -258,11 +262,11 @@ const APPController = (function(UICtrl, APICtrl) {
   /**
    * @description Функция создания <option> с подходящими плейлистами при выранном жанре
    */
-  UICtrl.genre.addEventListener('change', async () => {
+  DOMInputs.genre.addEventListener('change', async () => {
 
     UICtrl.resetPlaylist();
 
-    const genreSelect = UICtrl.genre;
+    const genreSelect = DOMInputs.genre;
 
     if (genreSelect){
 
@@ -283,13 +287,13 @@ const APPController = (function(UICtrl, APICtrl) {
   /**
    * @description Функция создания списка песен для выранного плейлиста
    */
-  UICtrl.submit.addEventListener('click', async (e) => {
+  DOMInputs.submit.addEventListener('click', async (e) => {
 
     e.preventDefault();
 
     UICtrl.resetTracks();
 
-    const playlistSelect = UICtrl.playlist;
+    const playlistSelect = DOMInputs.playlist;
 
     if (playlistSelect){
 
@@ -310,7 +314,7 @@ const APPController = (function(UICtrl, APICtrl) {
   /**
    * @description Функция создания элемента в html с информацией о выбранном треке
    */
-  UICtrl.tracks.addEventListener('click', async (e) => {
+DOMInputs.tracks.addEventListener('click', async (e) => {
 
     e.preventDefault();
 
