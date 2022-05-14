@@ -230,32 +230,40 @@
   margin-left: -1vw;
 }
 
-.trackInfo {
-  background-color: rgba(30, 30, 31);
+.sondDetail {
+  float: right;
   margin-bottom: 7vh;
   box-sizing: border-box;
   float: right;
-  margin-right: 10vw;
   font-family: gotham_black;
-  font-size: 1.2vw;
-  width: 35vw;
-  border: 1vh solid gray;
+  width: 40vw;
   height: 20vh;
   margin-top: 1vh;
 }
-
-.trackInfo:hover {
-  background-color: black;
-}
-
-.trackIMG {
+.DetailPhoto {
   float: left;
   position: absolute;
-  width: 5vw;
+  width: 8vw;
   height: 10vh;
   margin-left: 2vw;
-  margin-top: 4vh;
 }
+
+.DetailName {
+  position: absolute;
+  color: white;
+  font-size:1.3vw;
+  margin-left: 12vw;
+  margin-top: 1vh;
+}
+
+.DetailOwner {
+  position: absolute;
+  color: white;
+  font-size:1.3vw;
+  margin-left: 12vw;
+  margin-top: 5vh;
+}
+
 
 .containerButtons {
   width: 10vw;

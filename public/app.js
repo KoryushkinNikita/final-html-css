@@ -168,11 +168,24 @@ const UIController = (function() {
      */
     createTrackDetail(img, title, artist) {
 
-      const detailDiv = songDetail;
+      const detailDiv = this.inputField.songDetail;
 
       detailDiv.innerHTML = '';
 
-      detailDiv.insertAdjacentHTML('beforeend', getElementTemplate('track', img, title, artist));
+      trackDetail =
+      `
+    <div class="trackDetailPhoto">
+      <img src="${img}" class="DetailPhoto" alt="">
+    </div>
+    <div class="trackDetailName">
+        <label for="boxes" class="DetailName"><b>${title}</b></label>
+    </div>
+    <div class="trackDetailArtist">
+        <label for="boxes" class="DetailOwner">${artist}</label>
+    </div>
+    `
+
+      detailDiv.insertAdjacentHTML('beforeend', trackDetail);
     },
 
 
@@ -253,11 +266,11 @@ const APPController = (function(UICtrl, APICtrl) {
    */
   const loadSongs = async () => {
 
-    const track = await APICtrl.getTrack('https://api.spotify.com/v1/tracks/1rDQ4oMwGJI7B4tovsBOxc');
+    const track = await APICtrl.getTrack('https://api.spotify.com/v1/tracks/?ids=1rDQ4oMwGJI7B4tovsBOxc');
 
     if (track)
 
-      UICtrl.createDetail('album', track.name, track.album.images[1].url,track.artists[0].name);
+      UICtrl.createDetail('album', track.tracks[0].name, track.tracks[0].album.images[2].url,track.tracks[0].artists[0].name);
   }
 
   /**
@@ -269,7 +282,7 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const genreSelect = DOMInputs.genre;
 
-    if (genreSelect.innerHTML != ''){
+    if (genreSelect.value != 'Select Genre'){
 
       const genreId = genreSelect.options[genreSelect.selectedIndex].value;
 
@@ -294,9 +307,11 @@ const APPController = (function(UICtrl, APICtrl) {
 
     UICtrl.resetTracks();
 
+    const genreSelect = DOMInputs.genre;
+
     const playlistSelect = DOMInputs.playlist;
 
-    if (playlistSelect.innerHTML != ''){
+    if (playlistSelect.value != 'Select Playlist' || genreSelect.value != 'Select Genre'){
 
       const tracksEndPoint = playlistSelect.options[playlistSelect.selectedIndex].value;
 
@@ -321,16 +336,15 @@ DOMInputs.tracks.addEventListener('click', async (e) => {
 
     UICtrl.resetTrackDetail();
 
-
-    const trackEndpoint = e.target.id;
+    const trackEndpoint = e.target.id.slice(34);
 
     if (trackEndpoint){
 
-      const track = await APICtrl.getTrack(trackEndpoint);
+      const track = await APICtrl.getTrack(`https://api.spotify.com/v1/tracks/?ids=${trackEndpoint}`);
 
       if (track)
 
-        UICtrl.createTrackDetail(track.album.images[1].url, track.name, track.artists[0].name);
+        UICtrl.createTrackDetail(track.tracks[0].album.images[2].url, track.tracks[0].name, track.tracks[0].artists[0].name);
     }
   });
 
