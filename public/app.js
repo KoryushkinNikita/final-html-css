@@ -5,7 +5,7 @@ const APIController = (function() {
 
   const send = async (url,params) => {
       let token = localStorage.my_token;
-      if (token == null){
+      if (!token || (Date.now() - localStorage.token_at > 3600 * 3)){
         const result = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
@@ -17,6 +17,7 @@ const APIController = (function() {
         const data = await result.json();
         token = data.access_token;
         localStorage.my_token = token;
+        localStorage.token_at = Date.now();
       }
 
      if (!params) {
@@ -268,7 +269,7 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const genreSelect = DOMInputs.genre;
 
-    if (genreSelect){
+    if (genreSelect.innerHTML != ''){
 
       const genreId = genreSelect.options[genreSelect.selectedIndex].value;
 
@@ -295,7 +296,7 @@ const APPController = (function(UICtrl, APICtrl) {
 
     const playlistSelect = DOMInputs.playlist;
 
-    if (playlistSelect){
+    if (playlistSelect.innerHTML != ''){
 
       const tracksEndPoint = playlistSelect.options[playlistSelect.selectedIndex].value;
 
