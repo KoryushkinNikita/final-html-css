@@ -5,7 +5,8 @@ const APIController = (function() {
 
   const send = async (url,params) => {
       let token = localStorage.my_token;
-      if (!token || (Date.now() - localStorage.token_at > 3600 * 3)){
+
+      if (!token || (Date.now() - localStorage.token_at < localStorage.token_expiresIn)){
         const result = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
@@ -18,6 +19,7 @@ const APIController = (function() {
         token = data.access_token;
         localStorage.my_token = token;
         localStorage.token_at = Date.now();
+        localStorage.token_expiresIn = data.expires_in;
       }
 
      if (!params) {
@@ -80,10 +82,8 @@ const APIController = (function() {
      * @param {string} tracksEndPoint - ссылка для получения API ответа с информацией про песню
      */
     async getTrack(trackEndPoint) {
-      const result = await send(`${trackEndPoint}`);
-      if (result)
-        return result
-      return null
+        return await send(`${trackEndPoint}`);
+
     },
     /**
      * @description Функция получения информации о плейлисте
@@ -146,10 +146,7 @@ const UIController = (function() {
 
     addOption(selector, text, value){
       const options = `<option value="${value}">${text}</option>`;
-      if (selector == 'Genre')
-      this.inputField.genre.insertAdjacentHTML('beforeend', options);
-      else if (selector == 'playlist')
-      this.inputField.playlist.insertAdjacentHTML('beforeend', options);
+      this.inputField[selector.toLowerCase()]?.insertAdjacentHTML('beforeend', options);
     },
     /**
      * @description Функция создания списка треков
@@ -349,7 +346,7 @@ DOMInputs.tracks.addEventListener('click', async (e) => {
   });
 
   return {
-    init() {
+    async init() {
       loadGenres();
       loadPlaylists();
       loadSongs();
