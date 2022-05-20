@@ -6,7 +6,7 @@ const APIController = (function() {
   const send = async (url,params) => {
       let token = localStorage.my_token;
 
-      if (!token || (Date.now() - localStorage.token_at < localStorage.token_expiresIn)){
+      if (!token || (Date.now() > localStorage.token_expiresIn)){
         const result = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
@@ -19,7 +19,7 @@ const APIController = (function() {
         token = data.access_token;
         localStorage.my_token = token;
         localStorage.token_at = Date.now();
-        localStorage.token_expiresIn = data.expires_in;
+        localStorage.token_expiresIn = Date.now() + data.expires_in;
       }
 
      if (!params) {
@@ -90,10 +90,7 @@ const APIController = (function() {
      * @param {string} id - id плейлиста
      */
     async getPlaylist(id) {
-      const result = await send(`https://api.spotify.com/v1/albums/${id}`);
-      if (result)
-        return result
-      return null
+        return await send(`https://api.spotify.com/v1/albums/${id}`);
     }
   }
 })();
@@ -355,5 +352,4 @@ DOMInputs.tracks.addEventListener('click', async (e) => {
 
 })(UIController, APIController);
 
-localStorage.clear();
 APPController.init();
