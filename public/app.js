@@ -18,7 +18,6 @@ const APIController = (function() {
         const data = await result.json();
         token = data.access_token;
         localStorage.my_token = token;
-        localStorage.token_at = Date.now();
         localStorage.token_expiresIn = Date.now() + data.expires_in;
       }
 
@@ -103,13 +102,13 @@ const UIController = (function() {
     return (
       `
     <div class="${type}Photo ">
-      <img src="${img}" class="songPhoto photo" alt="">
+      <img src="${img}" class="songPhoto photo" id="${type}Photos" alt="${name}">
     </div>
     <div class="${type}Name">
-        <label for="boxes" class="SongTitle"><b>${name}</b></label>
+        <label class="SongTitle" id="${type}Titles"><b>${name}</b></label>
     </div>
     <div class="${type}Artist">
-        <label for="boxes" class="PlaylistOwner">${artist}</label>
+        <label class="PlaylistOwner" id="${type}Owners">${artist}</label>
     </div>
     `)
 
@@ -166,20 +165,7 @@ const UIController = (function() {
 
       detailDiv.innerHTML = '';
 
-      trackDetail =
-      `
-    <div class="trackDetailPhoto">
-      <img src="${img}" class="DetailPhoto" alt="">
-    </div>
-    <div class="trackDetailName">
-        <label for="boxes" class="DetailName"><b>${title}</b></label>
-    </div>
-    <div class="trackDetailArtist">
-        <label for="boxes" class="DetailOwner">${artist}</label>
-    </div>
-    `
-
-      detailDiv.insertAdjacentHTML('beforeend', trackDetail);
+      detailDiv.insertAdjacentHTML('beforeend', getElementTemplate('trackDetail',title, img, artist));
     },
 
 
@@ -193,7 +179,7 @@ const UIController = (function() {
 
     createDetail(type, name, img, artist) {
 
-        let elements = document.querySelectorAll(`.${type}`);
+        const elements = document.querySelectorAll(`.${type}`);
 
         elements.forEach(element => {
 
