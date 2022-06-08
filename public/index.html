@@ -10,97 +10,17 @@
 	<title>Spotify - веб приложение</title>
 </head>
 <body class="body">
-	<header class="header">
-		<a class="MainPage" href="main.html"> Main page</a>
-		<a class="Podcasts" href="#">Podcasts</a>
-		<img class="logo" src="%PUBLIC_URL%/img/spotify-logo.svg" title="Spotify logo" alt="Spotify logo" height="90%" width="90%" />
-		<a class="Podcasts" href="#">Podcasts</a>
-		<div class="searchContainer">
-			<a href="#" class="search">Search</a>
-		</div>
-		<a class="Playlists" href="#">Playlists</a>
-		<a class="Artists" href="#">Artists</a>
-		<div class="about">
-			<button class="dropbtn" type="button">Nikita</button>
-			<div class="dropdown-content">
-				<a href="#" class="dropPage">Account</a>
-				<a href="#" class="dropPage">Profile</a>
-				<a href="#" class="dropPage">Exit</a>
-			</div>
-		</div>
-	</header>
-	<div class="wrapper">
-		<div id="First" class="articles">
-			<div id="MyPlaylists" class="labels"><label>My Playlists</label></div>
-			<article class="playlist toInsert">
-			</article>
-			<article class="playlist toInsert">
-			</article>
-			<article class="playlist toInsert">
-			</article>
-			<article class="playlist toInsert">
-			</article>
-			</article>
-		</div>
-		<div id="PlaylistsOfTheDay" class="labels"><label>Top Songs</label></div>
-		<div id="Second" class="articles">
-			<article class='album toInsert'>
-			</article>
-			<article class='album toInsert'>
-			</article>
-			</article>
-			<article class='album toInsert'>
-			</article>
-			<article class='album toInsert'>
-			</article>
-		</div>
-		<div id="SearchPlaylist" class="labels"><label>Search Playlists</label></div>
-		<div class="container">
-			<form action="">
-				<input type="hidden" id='hidden_token'>
-					<select name="" id="select_genre" class="selectGenre containerButtons">
-						<option>Select Genre</option>
-					</select>
-					<select name="" id="select_playlist" class="selectPlaylist containerButtons">
-						<option>Select Playlist</option>
-					</select>
-					<button type="submit" id="btn_submit" class="SearchButton containerButtons">Search</button>
+     <noscript>You need to enable JavaScript to run this app.</noscript>
+     <div id="root"></div>
+     <!--
+       This HTML file is a template.
+       If you open it directly in the browser, you will see an empty page.
 
-			</form>
+       You can add webfonts, meta tags, or analytics to this file.
+       The build step will place the bundled scripts into the <body> tag.
 
-				<ul class="song-list">
-				</ul>
-				<div class="sondDetail" id="song-detail">
-				</div>
-		</div>
-	</div>
-	<div id="blackLine" class="BlackLine"></div>
-	<footer class="footer">
-		<div id="left" class="Left">
-			<img id="MyAlbum" class="MyOwnAlbum" src="%PUBLIC_URL%/img/footer_album.png" height="70px" width="70px" />
-			<div id="textblock" class="SongAndArtist">
-				<h1>Song</h1>
-				<h2>Artist</h2>
-			</div>
-		</div>
-		<div class="center">
-			<ul class="functionalButtonsCenter">
-				<li class="lis"><img id="Mix" class="CentralButtons" src="%PUBLIC_URL%/img/Mix.svg" /></li>
-				<li class="lis"><img id="Previus" class="CentralButtons" src="%PUBLIC_URL%/img/Back.svg" /></li>
-				<li class="lis"><img id="Play" class="CentralButtons" src="%PUBLIC_URL%/img/Play.svg" /></li>
-				<li class="lis"><img id="Next" class="CentralButtons" src="%PUBLIC_URL%/img/Next.svg" /></li>
-				<li class="lis"><img id="Repeat" class="CentralButtons" src="%PUBLIC_URL%/img/Repeat.svg" /></li>
-			</ul>
-		</div>
-		<div id="right">
-			<ul class="functionalButtons">
-				<li class="Rlis"><img id="Playlist" class="RigthButtons" src="%PUBLIC_URL%/img/Playlist.svg" /></li>
-				<li class="Rlis"><img id="Sound" class="RigthButtons" src="%PUBLIC_URL%/img/Sound.svg" /></li>
-				<li class="Rlis"><input class="volume" id="volume" type="range" min="0" max="100" value="50"></li>
-			</ul>
-		</div>
-	</footer>
-	<script src="app.js" type="text/javascript"></script>
-</body>
-
+       To begin the development, run `npm start` or `yarn start`.
+       To create a production bundle, use `npm run build` or `yarn build`.
+     -->
+   </body>
 </html>

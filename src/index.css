@@ -1,0 +1,302 @@
+@charset "utf-8"
+
+.html {
+  height: 100%;
+  font-size: 1vh;
+}
+.body::before{
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url(../public/img/ligths.jpg);
+  background-position: center;
+  filter: blur(2px);
+}
+.body {
+  height: 100%;
+  font-size: 1vh;
+  width: 100%;
+  height: 100%;
+  background-size: unset;
+  line-height: 100%;
+  box-sizing: border-box;
+  background-attachment: fixed;
+}
+/*------------------SideBar beginning-----------------*/
+.sidebar:before{
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url(../public/img/ligths.jpg);
+  filter: blur(5px);
+}
+.sideBar {
+  position: fixed;
+  height: 100vh;
+  width: 25vw;
+  border-right: 2px solid white;
+}
+.spotify{
+  color: white;
+  font-size: 4vw;
+  position: absolute;
+  font-family: gotham_black;
+  margin-top: 6vh;
+  margin-left: 4vw;
+  font-weight: 700;
+}
+
+.homeButton{
+  position: fixed;
+  display: inline-block;
+  margin-top: 20vh;
+  margin-left: 4vw;
+}
+
+.homeText {
+  position: absolute;
+  color: white;
+  font-size: 1.5vw;
+  font-family: gotham_black;
+  margin-left: 0.5vw;
+  margin-top: 3vh;
+}
+
+.homeImage {
+  width: 2vw;
+  height: 2vw;
+  margin-top: 1vh;
+}
+
+.search {
+  float: left;
+  position: fixed;
+  margin-top: 35vh;
+  margin-left: 4vw;
+  font-size: 1.5vw;
+  width: 15vw;
+  color: white;
+  background:rgba(226,226,226,0.1);
+}
+
+.search:hover{
+  border: 2px solid white;
+}
+
+.favouriteTracks{
+  position: fixed;
+  display: inline-block;
+  margin-top: 25vh;
+  margin-left: 4vw;
+  width: 20vw;
+}
+
+.heartText {
+  position: absolute;
+  color: white;
+  font-size: 1.5vw;
+  font-family: gotham_black;
+  margin-left: 0.5vw;
+  margin-top: 3vh;
+}
+
+.heart {
+  width: 2vw;
+  height: 2vw;
+  margin-top: 1vh;
+}
+.whiteLine{
+  position: fixed;
+  width: 15vw;
+  margin-left: 4vw;
+  margin-top: 45vh;
+}
+.trackImage{
+  width: 10vw;
+  height: 15vh;
+  margin-left: -1.5vw;
+  margin-top: 2vh;
+}
+
+.trackName{
+  position: absolute;
+  color: white;
+  font-size: 1.5vw;
+  font-family: gotham_black;
+  margin-left: -10vw;
+  margin-top: 18vh;
+}
+
+.trackOwner{
+  position: fixed;
+  color: white;
+  margin-left: -10vw;
+  margin-top: 21vh;
+  font-size: 1vw;
+  font-family: gotham_black;
+}
+.TrackBox{
+    position: fixed;
+    margin-top: 52vh;
+    width: 15vw;
+    height: 25vh;
+    margin-left: 4vw;
+}
+.TrackBox:hover{
+    background-color: rgba(30, 30, 31, 0.5);
+}
+
+.artistsBox{
+  float: left;
+  position: fixed;
+  margin-top: 80vh;
+  margin-left: 5vw;
+  width: 15vw;
+  height: 14vh;
+}
+.artistsBox:hover{
+  background-color: rgba(30, 30, 31, 0.5);
+}
+.artistImage{
+  position: fixed;
+  margin-top: 3vh;
+  width: 5vw;
+  height: 8vh;
+  border-radius: 50%;
+}
+.personalArtistName{
+  float: left;
+  color: white;
+  font-size: 1vw;
+  font-family: gotham_black;
+  margin-top: 6vh;
+  margin-left: 5.5vw;
+}
+/*------------------SideBar ending-----------------*/
+/*------------------MainPage beggining-----------------*/
+.mainPage{
+  margin-left: 25vw;
+  position: absolute;
+  float: right;
+  height: 100vh;
+  width: 75vw;
+  overflow-x:hidden;
+}
+.albumsLine{
+  height: 30vh;
+  float: left;
+  margin-top: 11vh;
+}
+.album{
+  display: inline-block;
+  margin-left: 4.3vw;
+}
+.albumImage{
+  width: 19vw;
+  height: 30vh;
+}
+.SpecialForYouLabel{
+  position:absolute;
+  color: white;
+  font-family: gotham_black;
+  margin-left: 3vw;
+  font-size: 3vw;
+  margin-top: 5vh;
+}
+.SelectGenreLabel{
+  position: absolute;
+  margin-top: 45vh;
+  margin-left: -66.8vw;
+  color: white;
+  font-size: 3vw;
+  font-family: gotham_black;
+}
+.container {
+  float: left;
+  margin-top: 10vh;
+  margin-left: 3.2vw;
+  width: 100%;
+}
+
+.containerButtons {
+  float: left;
+  display: inline;
+  font-size: 1vw;
+  margin-left: 7vw;
+  background-color: rgba(30, 30, 31, 0.5);
+  color: white;
+  margin-top: 1vh;
+}
+
+.ListOfSongs{
+  position: absolute;
+  width: 30vw;
+  float: left;
+  white-space: normal;
+  list-style-type: none;
+  display: block;
+  margin-top: 6vh;
+  padding-bottom: 5vh;
+}
+
+.selectValue{
+  width: 13vw;
+}
+
+.selectedSongButton{
+  width: 30vw;
+  height: 8vh;
+  background-color: rgba(30, 30, 31, 0.5);
+  color: white;
+  font-size: 1vw;
+  font-family: gotham_black;
+
+}
+.songDetail{
+  width: 35vw;
+  height: 20vh;
+  margin-left: 60vh;
+  position: absolute;
+  margin-top: -80vh;
+  float: right;
+  box-sizing: border-box;
+  background-color: rgba(30, 30, 31, 0.5);
+
+}
+
+.songAlbum{
+  margin-top: 3vh;
+  margin-left: 2vw;
+  width: 8vw;
+  height: 13vh;
+}
+.textStyle{
+  color: white;
+  font-size: 1vw;
+  font-family: gotham_black;
+}
+.songName{
+  margin-left: 11vw;
+  margin-top: -12.5vh;
+}
+
+.artistName{
+  margin-left: 11vw;
+  margin-top: 2vh;
+}
+/*------------------MainPage ending-----------------*/
+
+@font-face {
+  font-family: 'gotham_black';
+  src: url(../public/gotham_black.otf);
+  font-style: normal;
+  font-weight: normal;
+}
