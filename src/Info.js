@@ -1,8 +1,8 @@
 const Info = () => {
 
     return {
-        ClientId: 'e91988fcc1674aa88374f24be4844f85',
-        ClientSecret: '10badbb697f544ecb15e1efd7659a0b0'
+        ClientId: '6f6bada3500e4d1b8cd213f38d7c3a38',
+        ClientSecret: 'ad1b4c16ce4c423dad523e99b4036a3c'
     }
 }
 
